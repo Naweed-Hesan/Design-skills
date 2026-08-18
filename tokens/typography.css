@@ -1,0 +1,80 @@
+/* Type scale. Fixed machinery — pick your typefaces in tokens/brand.css.
+
+   The shape of this scale is a deliberate position, not a default:
+
+   · Headings are BOLD (700) and tightly tracked, tightening as they get
+     larger. A light or regular heading reads as a different system.
+   · Tracking is negative everywhere except labels. Display sits at
+     -0.036em; body at -0.005em.
+   · There is no uppercase step, because there is no uppercase in this
+     system. Section labels are small, regular weight and tertiary
+     colour — that is how they recede, not by being SET IN CAPS. */
+
+:root {
+  --weight-light:   300;
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-bold:    700;
+
+  /* Display + headings */
+  --text-display-size:   44px;
+  --text-display-line:   1.04;
+  --text-display-track:  -0.036em;
+  --text-display-weight: var(--weight-bold);
+
+  --text-h1-size:   34px;
+  --text-h1-line:   1.10;
+  --text-h1-track:  -0.032em;
+  --text-h1-weight: var(--weight-bold);
+
+  --text-h2-size:   26px;
+  --text-h2-line:   1.16;
+  --text-h2-track:  -0.028em;
+  --text-h2-weight: var(--weight-bold);
+
+  --text-h3-size:   20px;
+  --text-h3-line:   1.25;
+  --text-h3-track:  -0.022em;
+  --text-h3-weight: var(--weight-bold);
+
+  --text-h4-size:   16px;
+  --text-h4-line:   1.35;
+  --text-h4-track:  -0.015em;
+  --text-h4-weight: var(--weight-bold);
+
+  /* Titles inside UI chrome — bold, but at body size */
+  --text-title-size:   13.5px;
+  --text-title-line:   1.4;
+  --text-title-track:  -0.011em;
+  --text-title-weight: var(--weight-bold);
+
+  /* Body + UI. Four sizes carry an entire interface. */
+  --text-body-size:  13.5px;
+  --text-body-line:  1.5;
+  --text-body-track: -0.005em;
+
+  --text-small-size: 12.5px;
+  --text-small-line: 1.45;
+
+  --text-micro-size: 11.5px;
+  --text-micro-line: 1.4;
+
+  /* Field labels and section heads. Sentence case, never caps. */
+  --text-label-size:   11.5px;
+  --text-label-weight: var(--weight-medium);
+  --text-label-track:  0em;
+
+  /* Mono, for anything a reader compares down a column */
+  --text-mono-size:  12px;
+  --text-mono-track: -0.01em;
+
+  /* Marketing pages need bigger steps than an interface does. These sit
+     on top of the scale above rather than replacing it. */
+  --text-hero-size:  clamp(40px, 6.4vw, 76px);
+  --text-hero-line:  1.02;
+  --text-hero-track: -0.04em;
+
+  --text-lead-size:  clamp(15px, 1.5vw, 19px);
+  --text-lead-line:  1.5;
+  --text-lead-track: -0.012em;
+}

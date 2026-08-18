@@ -1,0 +1,123 @@
+/* Semantic colour aliases. Fixed machinery — edit tokens/brand.css instead.
+
+   Components reference ONLY the names in this file. Never a hex, never a
+   ramp step like --accent-500 directly. That indirection is what lets a
+   brand swap work. */
+
+:root {
+  /* ── Surfaces, back to front ─────────────────────────────────────── */
+  --surface-canvas:  var(--paper-100);  /* the page behind everything */
+  --surface-raised:  var(--paper-0);    /* panels floating on it */
+  --surface-subtle:  var(--paper-50);   /* a quieter panel */
+  --surface-sunk:    var(--paper-200);  /* wells, tracks, inset groups */
+  --surface-overlay: var(--paper-0);    /* dialogs, popovers, menus */
+  --surface-inverse: var(--ink-950);
+  --scrim: rgba(20, 20, 18, 0.44);
+
+  /* ── Text — four steps, every one AA on --surface-raised ─────────── */
+  --text-primary:   var(--slate-900);
+  --text-secondary: var(--slate-700);
+  --text-tertiary:  var(--slate-500);
+  --text-disabled:  var(--slate-400);
+  --text-inverse:   var(--paper-50);
+  --text-on-accent: #FFFFFF;
+
+  /* ── Accent ───────────────────────────────────────────────────────
+     Three roles, because one hue cannot do all three jobs accessibly:
+       --accent        identity — borders, indicators, rules, small fills
+       --accent-solid  filled controls, dark enough for white text
+       --accent-text   accent-coloured text on a light surface */
+  --accent:        var(--accent-500);
+  --accent-solid:  var(--accent-600);
+  --accent-hover:  var(--accent-700);
+  --accent-text:   var(--accent-700);
+  --accent-soft:   rgba(var(--accent-rgb), 0.10);
+  --accent-softer: rgba(var(--accent-rgb), 0.05);
+  --accent-ring:   rgba(var(--accent-rgb), 0.32);
+
+  /* ── Borders — hairlines carry structure here, not boxes ─────────── */
+  --border-subtle: rgba(10, 10, 10, 0.06);
+  --border:        rgba(10, 10, 10, 0.10);
+  --border-strong: rgba(10, 10, 10, 0.18);
+  --border-accent: var(--accent);
+
+  /* ── Status ──────────────────────────────────────────────────────── */
+  --success:      var(--green-600);
+  --success-soft: rgba(23, 113, 78, 0.10);
+  --warning:      var(--amber-600);
+  --warning-soft: rgba(143, 99, 20, 0.10);
+  --danger:       var(--red-600);
+  --danger-soft:  rgba(168, 58, 46, 0.10);
+  --info:         var(--blue-600);
+  --info-soft:    rgba(43, 108, 158, 0.10);
+
+  /* ── Data visualisation ──────────────────────────────────────────── */
+  --chart-1: var(--accent-500);
+  --chart-2: var(--series-2-light);
+  --chart-3: var(--series-3-light);
+  --chart-4: var(--series-4-light);
+  --chart-5: var(--series-5-light);
+  --chart-6: var(--series-6-light);
+  --chart-grid: rgba(10, 10, 10, 0.07);
+  --chart-axis: var(--slate-400);
+  --chart-fill-from: rgba(var(--accent-rgb), 0.22);
+  --chart-fill-to:   rgba(var(--accent-rgb), 0.00);
+
+  /* The neutral that sits behind an image while it loads */
+  --media-well: var(--paper-200);
+}
+
+[data-theme="dark"] {
+  --surface-canvas:  var(--ink-950);
+  --surface-raised:  var(--ink-850);
+  --surface-subtle:  var(--ink-900);
+  --surface-sunk:    var(--ink-800);
+  --surface-overlay: var(--ink-850);
+  --surface-inverse: var(--paper-50);
+  --scrim: rgba(0, 0, 0, 0.66);
+
+  --text-primary:   var(--ink-text-primary);
+  --text-secondary: var(--ink-text-secondary);
+  --text-tertiary:  var(--ink-text-tertiary);
+  --text-disabled:  var(--ink-text-disabled);
+  --text-inverse:   var(--ink-950);
+  --text-on-accent: var(--accent-900);
+
+  /* On a dark surface the LIGHT accent step is the accessible one, so
+     identity / solid / text collapse to a single value. This is the
+     part people get wrong when they re-skin: do not simply mirror the
+     light-theme mapping here. */
+  --accent:        var(--accent-300);
+  --accent-solid:  var(--accent-300);
+  --accent-hover:  var(--accent-200);
+  --accent-text:   var(--accent-300);
+  --accent-soft:   rgba(var(--accent-rgb-dark), 0.14);
+  --accent-softer: rgba(var(--accent-rgb-dark), 0.07);
+  --accent-ring:   rgba(var(--accent-rgb-dark), 0.38);
+
+  --border-subtle: rgba(255, 255, 255, 0.055);
+  --border:        rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.20);
+
+  --success:      var(--green-400);
+  --success-soft: rgba(69, 192, 138, 0.13);
+  --warning:      var(--amber-400);
+  --warning-soft: rgba(214, 168, 94, 0.13);
+  --danger:       var(--red-400);
+  --danger-soft:  rgba(224, 104, 90, 0.13);
+  --info:         var(--blue-400);
+  --info-soft:    rgba(99, 174, 220, 0.13);
+
+  --chart-1: var(--accent-300);
+  --chart-2: var(--series-2-dark);
+  --chart-3: var(--series-3-dark);
+  --chart-4: var(--series-4-dark);
+  --chart-5: var(--series-5-dark);
+  --chart-6: var(--series-6-dark);
+  --chart-grid: rgba(255, 255, 255, 0.07);
+  --chart-axis: #6E6E69;
+  --chart-fill-from: rgba(var(--accent-rgb-dark), 0.26);
+  --chart-fill-to:   rgba(var(--accent-rgb-dark), 0.00);
+
+  --media-well: var(--ink-800);
+}

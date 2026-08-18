@@ -1,0 +1,21 @@
+/* Elevation. Soft, wide and low opacity — never a heavier border.
+   If you find yourself thickening a border to separate two things,
+   the answer is a surface change or a shadow, not a 2px rule. */
+:root {
+  --shadow-xs: 0 1px 2px rgba(13, 13, 13, 0.05);
+  --shadow-sm: 0 1px 2px rgba(13, 13, 13, 0.04), 0 2px 6px rgba(13, 13, 13, 0.04);
+  --shadow-md: 0 1px 2px rgba(13, 13, 13, 0.04), 0 8px 24px rgba(13, 13, 13, 0.06);
+  --shadow-lg: 0 2px 4px rgba(13, 13, 13, 0.05), 0 16px 40px rgba(13, 13, 13, 0.10);
+  --shadow-popover: 0 12px 34px rgba(13, 13, 13, 0.18);
+  --focus-ring: 0 0 0 3px var(--accent-ring);
+}
+
+/* Dark theme deepens shadows rather than removing them. A dark panel
+   with no shadow floats nowhere. */
+[data-theme="dark"] {
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.36), 0 2px 6px rgba(0, 0, 0, 0.28);
+  --shadow-md: 0 1px 2px rgba(0, 0, 0, 0.40), 0 10px 30px rgba(0, 0, 0, 0.34);
+  --shadow-lg: 0 2px 6px rgba(0, 0, 0, 0.44), 0 20px 48px rgba(0, 0, 0, 0.46);
+  --shadow-popover: 0 14px 40px rgba(0, 0, 0, 0.56);
+}

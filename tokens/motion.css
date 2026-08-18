@@ -1,0 +1,37 @@
+/* Motion. One easing curve for everything. Movement confirms that
+   something happened; it never performs. Nothing exceeds 220ms except
+   a single media zoom, and all of it disappears under reduced-motion. */
+:root {
+  --ease:     cubic-bezier(0.22, 0.68, 0.24, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --duration-instant: 120ms;
+  --duration-fast:    180ms;
+  --duration-base:    220ms;
+  --duration-slow:    320ms;
+  --duration-media:   550ms;
+
+  --transition-control: all var(--duration-fast) var(--ease);
+  --transition-surface: opacity var(--duration-base) var(--ease),
+                        transform var(--duration-base) var(--ease);
+
+  /* Travel distances. Anything larger reads as a page transition. */
+  --lift-card:  -2px;
+  --rise-enter: 8px;
+  --zoom-media: 1.04;
+}
+
+@keyframes ds-rise    { from { opacity: 0; transform: translateY(var(--rise-enter)); } to { opacity: 1; transform: none; } }
+@keyframes ds-fade    { from { opacity: 0; } to { opacity: 1; } }
+@keyframes ds-pop     { from { opacity: 0; transform: translateY(6px) scale(0.985); } to { opacity: 1; transform: none; } }
+@keyframes ds-shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+@keyframes ds-spin    { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,14 @@
+/* Corner roles. Fixed machinery — pick your corner SET in tokens/brand.css.
+
+   A component asks for a role, never a size, so switching the set in
+   brand.css moves every corner in the system together. */
+:root {
+  --radius-pill:   999px;
+  --radius-circle: 50%;
+
+  --radius-panel:   var(--radius-lg);
+  --radius-control: var(--radius-md);
+  --radius-media:   var(--radius-sm);
+  --radius-chip:    var(--radius-sm);
+  --radius-inset:   var(--radius-xs);
+}

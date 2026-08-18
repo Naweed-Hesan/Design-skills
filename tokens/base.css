@@ -1,0 +1,77 @@
+/* Element defaults. Everything a page needs before a single component
+   renders. Keep this thin — it is a reset with opinions, not a
+   stylesheet. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--surface-canvas);
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-line);
+  letter-spacing: var(--text-body-track);
+  color: var(--text-secondary);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Headings are bold and primary-coloured by default, so a component
+   never has to restate it. */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  color: var(--text-primary);
+  font-weight: var(--weight-bold);
+  text-wrap: balance;
+}
+h1 { font-size: var(--text-h1-size); line-height: var(--text-h1-line); letter-spacing: var(--text-h1-track); }
+h2 { font-size: var(--text-h2-size); line-height: var(--text-h2-line); letter-spacing: var(--text-h2-track); }
+h3 { font-size: var(--text-h3-size); line-height: var(--text-h3-line); letter-spacing: var(--text-h3-track); }
+h4 { font-size: var(--text-h4-size); line-height: var(--text-h4-line); letter-spacing: var(--text-h4-track); }
+
+p { margin: 0; text-wrap: pretty; }
+
+a { color: var(--accent-text); text-decoration: none; }
+a:hover { color: var(--accent-text); text-decoration: underline; text-underline-offset: 2px; }
+
+button, input, textarea, select {
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+}
+input::placeholder, textarea::placeholder { color: var(--text-disabled); }
+
+/* Tabular figures wherever numbers stack in a column. */
+.ds-num, td.ds-num, .ds-mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-mono-size);
+  letter-spacing: var(--text-mono-track);
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+::selection { background: var(--accent-soft); }
+
+svg { display: block; flex: none; }
+/* Line icons: no fill, stroke follows text colour. */
+.ds-icon {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: var(--radius-pill);
+  border: 3.5px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--text-disabled); border: 3.5px solid transparent; background-clip: content-box; }
+::-webkit-scrollbar-track { background: transparent; }

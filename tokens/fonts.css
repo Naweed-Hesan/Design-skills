@@ -1,0 +1,11 @@
+/* Font loading. Update this whenever you change --font-sans or
+   --font-mono in tokens/brand.css — the stack there is only a
+   reference, this is what actually fetches the files.
+
+   CDN links keep the system portable; no binaries ship with it. For
+   production, replace with self-hosted @font-face rules.
+
+   Default: Satoshi (Fontshare) 300/400/500/700 + JetBrains Mono
+   (Google) 400/500. Load the weights you use and no more. */
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap");

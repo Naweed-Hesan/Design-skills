@@ -1,0 +1,32 @@
+/* Spacing and layout. Fixed machinery — pick your DENSITY (the three
+   control heights) in tokens/brand.css.
+
+   4px base grid. Every gap, pad and inset in the system is a step on
+   this scale; a 7px gap means someone eyeballed it. */
+:root {
+  --space-0:  0px;
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-7:  32px;
+  --space-8:  40px;
+  --space-9:  48px;
+  --space-10: 64px;
+  --space-11: 80px;
+  --space-12: 120px;   /* marketing section rhythm */
+
+  /* Layout */
+  --sidebar-width: 236px;
+  --topbar-height: 52px;
+  --page-max:      1440px;   /* app shells */
+  --content-max:   1240px;   /* the column inside a shell */
+  --marketing-max: 1120px;   /* marketing sections */
+  --prose-max:     680px;    /* long-form text, always */
+
+  /* Grid defaults, overridable per view */
+  --grid-gap:     4px;
+  --grid-columns: 4;
+}

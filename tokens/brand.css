@@ -1,0 +1,143 @@
+/* ═══════════════════════════════════════════════════════════════════
+   BRAND LAYER — the only file you edit per project.
+
+   Everything else in tokens/ is fixed system machinery that aliases
+   these seeds into semantic names. Change a value here and buttons,
+   charts, panels, focus rings and shadows all follow.
+
+   Five decisions, in the order you should make them:
+     1. Accent      the one hue that marks active / primary
+     2. Neutrals    the temperature of paper and ink
+     3. Typefaces   sans for everything, mono for compared numbers
+     4. Corners     soft · rounded · sharp
+     5. Density     control heights
+
+   Copy a file out of presets/ over this one for a ready-made set.
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── 1 · ACCENT ────────────────────────────────────────────────────
+     Eight steps. You only need five of them wired up, but keeping the
+     full ramp means tinted fills and dark-theme values are already
+     there when you want them.
+
+     The three that carry real weight:
+       500  the identity value — indicators, borders, rules, small fills
+       600  one step darker, so white text on a filled control clears 4.5:1
+       700  darker still, for accent-coloured TEXT on a light surface
+
+     Verify those two contrast pairs after any change. The method is in
+     references/contrast.md — it is four lines of arithmetic, not a vibe.
+
+     Default: teal. */
+  --accent-900: #06201F;
+  --accent-800: #08595C;
+  --accent-700: #0A7377;
+  --accent-600: #0A7E81;
+  --accent-500: #0B8B8E;
+  --accent-400: #1FA3A2;
+  --accent-300: #37B9B4;
+  --accent-200: #7FD3CF;
+  --accent-100: #C9EBE9;
+
+  /* Same hues as rgb triplets, because alpha tints (soft fills, focus
+     rings, selection) need channels rather than a hex. Keep these in
+     sync with 500 and 300 above — light theme tints from 500, dark
+     from 300. */
+  --accent-rgb:      11, 139, 142;   /* = --accent-500 */
+  --accent-rgb-dark: 55, 185, 180;   /* = --accent-300 */
+
+  /* ── 2 · NEUTRALS ──────────────────────────────────────────────────
+     Paper = light surfaces, ink = dark surfaces, slate = text greys.
+
+     These are warm-shifted (a touch of yellow-red) so they sit under a
+     warm accent without going grey-blue. For a cool brand, shift the
+     same steps the other way — the lightness values are what matter and
+     should not move; only the hue should. */
+
+  /* Paper — light surfaces, lightest first */
+  --paper-0:   #FFFFFF;
+  --paper-50:  #FAF9F7;
+  --paper-100: #F1F0EC;
+  --paper-200: #EAE9E4;
+  --paper-300: #DEDDD7;
+
+  /* Ink — dark surfaces, darkest first */
+  --ink-950: #0A0A0A;
+  --ink-900: #121212;
+  --ink-850: #161616;
+  --ink-800: #1F1F1F;
+  --ink-700: #2A2A2A;
+
+  /* Slate — text greys on paper */
+  --slate-900: #0A0A0A;
+  --slate-800: #262622;
+  --slate-700: #4A4A46;
+  --slate-600: #5E5E58;
+  --slate-500: #74746E;
+  --slate-400: #9A9A93;
+  --slate-300: #B4B4AE;
+  --slate-200: #D2D1CB;
+
+  /* Text greys on ink — not the slate ramp inverted. Dark surfaces need
+     less contrast range than light ones or the text glares. */
+  --ink-text-primary:   #F5F5F3;
+  --ink-text-secondary: #B4B4AE;
+  --ink-text-tertiary:  #82827C;
+  --ink-text-disabled:  #5E5E58;
+
+  /* ── 3 · STATUS + SERIES ───────────────────────────────────────────
+     One value tuned for light surfaces, one for dark. Desaturated on
+     purpose: status colour should read as information, not alarm.
+     Re-tune the hues toward your accent if the defaults clash. */
+  --green-600: #17714E;  --green-400: #45C08A;
+  --amber-600: #8F6314;  --amber-400: #D6A85E;
+  --red-600:   #A83A2E;  --red-400:   #E0685A;
+  --blue-600:  #2B6C9E;  --blue-400:  #63AEDC;
+
+  /* Chart series, in the order they get assigned. Series 1 is always
+     the accent — a chart's first line should match the rest of the UI.
+     Only reach past series 3 when you genuinely have that many. */
+  --series-2-light: #4C7FA8;  --series-2-dark: #6FA9CE;
+  --series-3-light: #C08A2E;  --series-3-dark: #DFAE62;
+  --series-4-light: #8A5C9E;  --series-4-dark: #B487C7;
+  --series-5-light: #5C8560;  --series-5-dark: #86B389;
+  --series-6-light: #B4674A;  --series-6-dark: #D08D71;
+
+  /* ── 4 · TYPEFACES ─────────────────────────────────────────────────
+     Two families. A third display face is almost always a mistake in an
+     interface — earn it before you add it.
+
+     The sans needs a real bold (700). Headings in this system are bold
+     and tightly tracked; a family that tops out at 600 will look soft.
+     Whatever you pick, update tokens/fonts.css to actually load it. */
+  --font-sans: "Satoshi", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+
+  /* ── 5 · CORNERS ───────────────────────────────────────────────────
+     Three coherent sets. Pick one, paste its four values, delete the
+     rest. Mixing sets is what makes a system look assembled rather
+     than designed.
+
+       soft     16 / 10 / 8 / 4    the default — friendly, current
+       rounded  22 / 14 / 12 / 6   softer, more consumer
+       sharp     6 /  4 / 4 / 2    denser, more technical
+
+     Order is: panel / control / media / hairline-inset */
+  --radius-xl: 22px;
+  --radius-lg: 16px;   /* panel */
+  --radius-md: 10px;   /* control */
+  --radius-sm: 8px;    /* media */
+  --radius-xs: 4px;    /* hairline inset */
+
+  /* ── 6 · DENSITY ───────────────────────────────────────────────────
+     Three control heights, and nothing in between — an interface with
+     five button heights reads as five different interfaces.
+
+       compact   24 / 28 / 36   dense tools, tables, admin
+       standard  26 / 32 / 40   the default
+       roomy     32 / 40 / 48   marketing, touch, consumer */
+  --control-sm: 26px;
+  --control-md: 32px;
+  --control-lg: 40px;
+}
