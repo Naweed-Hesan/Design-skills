@@ -1,9 +1,9 @@
 ---
-name: design-system
-description: House design system for building any interface or marketing page — token foundations with a swappable brand layer, a brand-neutral component library, and the rules that keep every project looking like it came from the same studio. Use when designing or building a UI, app screen, dashboard, admin tool, browser extension, settings page, landing page, marketing site, pricing page, or a design system itself — whether the output is a Claude Design canvas, a React prototype, or a set of tokens.
+name: Hairline
+description: Hairline is a house design system for building any interface or marketing page: token foundations with a swappable brand layer, a brand-neutral component library, and the rules that keep every project looking like it came from the same studio. Use when designing or building a UI, app screen, dashboard, admin tool, browser extension, settings page, landing page, marketing site, pricing page, or a design system itself — whether the output is a Claude Design canvas, a React prototype, or a set of tokens.
 ---
 
-# Design system
+# Hairline
 
 Quiet chrome, generous whitespace, and one accent that only appears where something is
 active. Structure comes from hairlines and soft shadows, never from heavy boxes. The

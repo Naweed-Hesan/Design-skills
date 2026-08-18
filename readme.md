@@ -1,7 +1,9 @@
-# Design system
+# Hairline
 
-A brand-neutral house system for interfaces and marketing pages. The visual identity of
-any project lives in exactly one file; everything else is machinery that follows it.
+A brand-neutral house system for interfaces and marketing pages. Named for the principle it
+is built on: structure comes from 1px rules at 6–10% opacity and soft shadows, never from
+heavy boxes. The visual identity of any project lives in exactly one file; everything else
+is machinery that follows it.
 
 ## Principles
 

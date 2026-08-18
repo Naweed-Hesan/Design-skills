@@ -8,9 +8,23 @@ the top of `SKILL.md`.
 A Claude Design canvas: an app shell with three screens, a theme toggle, and the brand
 layer exposed as controls in the properties panel (accent, corners, density, theme).
 
-Copy it beside a `support.js` and edit. The brand knobs are the part worth keeping — they
-let someone retheme the design without touching code, and they are already wired to write
-custom properties onto the root, so every corner and control height follows.
+The brand knobs are the part worth keeping — they let someone retheme the design without
+touching code, and they are already wired to write custom properties onto the root, so
+every corner and control height follows.
+
+**It needs a `support.js` beside it, and that file is not in this repo.** `support.js` is
+Claude Design's rendering runtime — it is what interprets `<x-dc>`, the `{{ }}` bindings,
+`sc-for` / `sc-if` and the `data-props` block. Claude Design supplies it when the canvas is
+created there, so:
+
+- **Inside Claude Design** — nothing to do. The runtime is already present.
+- **Opened as a local file** — the page renders blank. That is expected, not a bug. Copy
+  `support.js` from an existing Claude Design export into the same folder to preview it
+  offline.
+
+No copy is vendored here on purpose: the file is generated ("do not edit — rebuild with
+`bun run build`") and a stale copy would break the template whenever the platform's runtime
+moves on.
 
 Grammar reference: `references/dc-canvas.md`.
 
