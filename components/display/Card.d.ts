@@ -14,8 +14,11 @@ export interface CardProps extends Omit<React.HTMLAttributes<HTMLElement>, 'titl
   /** A footer bar on a sunk surface — where a form's buttons go */
   footer?: React.ReactNode;
   children?: React.ReactNode;
-  /** Body and header padding in px. Drop to 0 for edge-to-edge tables and media. */
+  /** Body padding in px. Drop to 0 for edge-to-edge tables and media —
+   *  the header and footer keep their own padding regardless. */
   padding?: number;
+  /** Override the header/footer padding independently. Rarely needed. */
+  headerPadding?: number;
   elevation?: 'none' | 'sm' | 'md' | 'lg';
   /** A quieter nested panel: subtle surface, hairline border, no shadow */
   inset?: boolean;

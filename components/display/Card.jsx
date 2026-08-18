@@ -2,9 +2,14 @@ import React from 'react';
 
 export function Card({
   title, subtitle, actions, footer, children,
-  padding = 16, elevation = 'md', inset = false, style, bodyStyle, ...rest
+  padding = 16, headerPadding, elevation = 'md', inset = false, style, bodyStyle, ...rest
 }) {
   const SHADOWS = { none: 'none', sm: 'var(--shadow-sm)', md: 'var(--shadow-md)', lg: 'var(--shadow-lg)' };
+
+  /* The header and footer keep their own padding regardless of `padding`,
+     which exists so the BODY can go edge-to-edge for tables and media.
+     Zeroing the chrome too would jam the title into the rounded corner. */
+  const chrome = headerPadding !== undefined ? headerPadding : padding || 16;
 
   return (
     <section
@@ -27,7 +32,7 @@ export function Card({
             display: 'flex',
             alignItems: 'center',
             gap: 12,
-            padding: `${padding}px ${padding}px ${subtitle ? 12 : 13}px`,
+            padding: `${chrome}px ${chrome}px ${subtitle ? 12 : 13}px`,
             borderBottom: children ? '1px solid var(--border-subtle)' : 'none',
           }}
         >
@@ -57,7 +62,7 @@ export function Card({
       {footer ? (
         <footer style={{
           display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 8,
-          padding: `12px ${padding}px`,
+          padding: `12px ${chrome}px`,
           borderTop: '1px solid var(--border-subtle)',
           background: 'var(--surface-subtle)',
         }}>{footer}</footer>
