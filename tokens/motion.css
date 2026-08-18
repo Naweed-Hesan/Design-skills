@@ -26,6 +26,7 @@
 @keyframes ds-pop     { from { opacity: 0; transform: translateY(6px) scale(0.985); } to { opacity: 1; transform: none; } }
 @keyframes ds-shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
 @keyframes ds-spin    { to { transform: rotate(360deg); } }
+@keyframes ds-indeterminate { 0% { margin-left: -35%; } 100% { margin-left: 100%; } }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
