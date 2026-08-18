@@ -1,0 +1,53 @@
+/* ── Ember · warm ────────────────────────────────────────────────────
+   Warm paper pushed further, an orange-red accent, rounded corners, roomy density.
+   For consumer products and marketing pages that want to feel alive.
+
+   Copy over tokens/brand.css:  cp presets/ember.css tokens/brand.css
+   Then update tokens/fonts.css to load the typefaces named below.
+
+   Contrast-verified: python3 scripts/check-contrast.py presets/ember.css
+   ─────────────────────────────────────────────────────────────────── */
+:root {
+  --accent-900: #2B0F07;
+  --accent-800: #75300F;
+  --accent-700: #8E3D18;
+  --accent-600: #A8491C;
+  --accent-500: #C4551F;
+  --accent-400: #E0733A;
+  --accent-300: #F09368;
+  --accent-200: #F7BFA4;
+  --accent-100: #FCE3D6;
+  --accent-rgb:      196, 85, 31;
+  --accent-rgb-dark: 240, 147, 104;
+
+  /* Neutrals — warm */
+  --paper-0: #FFFFFF;  --paper-50: #FBF9F7;  --paper-100: #F4F0EB;
+  --paper-200: #EDE7E0; --paper-300: #E1D9D0;
+  --ink-950: #0C0A08;  --ink-900: #14110E;  --ink-850: #191512;
+  --ink-800: #221D19;  --ink-700: #2D2723;
+  --slate-900: #0C0A08; --slate-800: #2A241F; --slate-700: #4E453D;
+  --slate-600: #625850; --slate-500: #786D64; --slate-400: #9E938A;
+  --slate-300: #B7ADA4; --slate-200: #D5CCC3;
+  --ink-text-primary: #F6F3F0;  --ink-text-secondary: #B8AFA6;
+  --ink-text-tertiary: #8A8178; --ink-text-disabled: #625950;
+
+  --green-600: #1A6E4F;  --green-400: #4CBC8C;
+  --amber-600: #8A6014;  --amber-400: #D9A85C;
+  --red-600:   #AB362C;  --red-400:   #E36557;
+  --blue-600:  #2F688F;  --blue-400:  #6DA9CE;
+  --series-2-light: #2F688F;  --series-2-dark: #6DA9CE;
+  --series-3-light: #B58128;  --series-3-dark: #DCA75E;
+  --series-4-light: #8A5486;  --series-4-dark: #BC86B6;
+  --series-5-light: #4F8560;  --series-5-dark: #83B590;
+  --series-6-light: #9C5B4A;  --series-6-dark: #C68877;
+
+  --font-sans: "General Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+
+  /* Corners — rounded */
+  --radius-xl: 28px; --radius-lg: 22px; --radius-md: 14px;
+  --radius-sm: 12px; --radius-xs: 6px;
+
+  /* Density — roomy */
+  --control-sm: 32px; --control-md: 40px; --control-lg: 48px;
+}

@@ -1,0 +1,53 @@
+/* ── Teal · the default ────────────────────────────────────────────────────
+   Warm paper, one greenish-blue accent, soft corners, standard density.
+   Quiet and current. The safe starting point when nothing argues otherwise.
+
+   Copy over tokens/brand.css:  cp presets/teal.css tokens/brand.css
+   Then update tokens/fonts.css to load the typefaces named below.
+
+   Contrast-verified: python3 scripts/check-contrast.py presets/teal.css
+   ─────────────────────────────────────────────────────────────────── */
+:root {
+  --accent-900: #06201F;
+  --accent-800: #08595C;
+  --accent-700: #0A7377;
+  --accent-600: #0A7E81;
+  --accent-500: #0B8B8E;
+  --accent-400: #1FA3A2;
+  --accent-300: #37B9B4;
+  --accent-200: #7FD3CF;
+  --accent-100: #C9EBE9;
+  --accent-rgb:      11, 139, 142;
+  --accent-rgb-dark: 55, 185, 180;
+
+  /* Neutrals — warm */
+  --paper-0: #FFFFFF;  --paper-50: #FAF9F7;  --paper-100: #F1F0EC;
+  --paper-200: #EAE9E4; --paper-300: #DEDDD7;
+  --ink-950: #0A0A0A;  --ink-900: #121212;  --ink-850: #161616;
+  --ink-800: #1F1F1F;  --ink-700: #2A2A2A;
+  --slate-900: #0A0A0A; --slate-800: #262622; --slate-700: #4A4A46;
+  --slate-600: #5E5E58; --slate-500: #74746E; --slate-400: #9A9A93;
+  --slate-300: #B4B4AE; --slate-200: #D2D1CB;
+  --ink-text-primary: #F5F5F3;  --ink-text-secondary: #B4B4AE;
+  --ink-text-tertiary: #82827C; --ink-text-disabled: #5E5E58;
+
+  --green-600: #17714E;  --green-400: #45C08A;
+  --amber-600: #8F6314;  --amber-400: #D6A85E;
+  --red-600:   #A83A2E;  --red-400:   #E0685A;
+  --blue-600:  #2B6C9E;  --blue-400:  #63AEDC;
+  --series-2-light: #4C7FA8;  --series-2-dark: #6FA9CE;
+  --series-3-light: #C08A2E;  --series-3-dark: #DFAE62;
+  --series-4-light: #8A5C9E;  --series-4-dark: #B487C7;
+  --series-5-light: #5C8560;  --series-5-dark: #86B389;
+  --series-6-light: #B4674A;  --series-6-dark: #D08D71;
+
+  --font-sans: "Satoshi", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+
+  /* Corners — soft */
+  --radius-xl: 22px; --radius-lg: 16px; --radius-md: 10px;
+  --radius-sm: 8px;  --radius-xs: 4px;
+
+  /* Density — standard */
+  --control-sm: 26px; --control-md: 32px; --control-lg: 40px;
+}

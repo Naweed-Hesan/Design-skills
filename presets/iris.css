@@ -1,0 +1,53 @@
+/* ── Iris · violet ────────────────────────────────────────────────────
+   Cool-neutral paper, a violet accent, soft corners, standard density.
+   For creative tools and products that want a little more personality than teal.
+
+   Copy over tokens/brand.css:  cp presets/iris.css tokens/brand.css
+   Then update tokens/fonts.css to load the typefaces named below.
+
+   Contrast-verified: python3 scripts/check-contrast.py presets/iris.css
+   ─────────────────────────────────────────────────────────────────── */
+:root {
+  --accent-900: #191033;
+  --accent-800: #42308A;
+  --accent-700: #523BA0;
+  --accent-600: #6349B6;
+  --accent-500: #7357CC;
+  --accent-400: #9280DC;
+  --accent-300: #B0A2E8;
+  --accent-200: #D2CAF3;
+  --accent-100: #ECE7FA;
+  --accent-rgb:      115, 87, 204;
+  --accent-rgb-dark: 176, 162, 232;
+
+  /* Neutrals — cool-neutral */
+  --paper-0: #FFFFFF;  --paper-50: #FAFAFC;  --paper-100: #F1F1F6;
+  --paper-200: #E8E8EF; --paper-300: #DADAE4;
+  --ink-950: #09090C;  --ink-900: #111116;  --ink-850: #15151C;
+  --ink-800: #1D1D26;  --ink-700: #27272F;
+  --slate-900: #09090C; --slate-800: #24242C; --slate-700: #46464F;
+  --slate-600: #5A5A63; --slate-500: #70707A; --slate-400: #97979F;
+  --slate-300: #B1B1B9; --slate-200: #CFCFD6;
+  --ink-text-primary: #F4F4F7;  --ink-text-secondary: #B2B2BB;
+  --ink-text-tertiary: #808089; --ink-text-disabled: #5B5B64;
+
+  --green-600: #17714E;  --green-400: #45C08A;
+  --amber-600: #8B6215;  --amber-400: #D5A75E;
+  --red-600:   #A63A31;  --red-400:   #DF6A5D;
+  --blue-600:  #2C6B9F;  --blue-400:  #67ADDC;
+  --series-2-light: #2C6B9F;  --series-2-dark: #67ADDC;
+  --series-3-light: #B5822B;  --series-3-dark: #DBA862;
+  --series-4-light: #A34F7E;  --series-4-dark: #CE85AC;
+  --series-5-light: #47876F;  --series-5-dark: #7CB69C;
+  --series-6-light: #9E6248;  --series-6-dark: #C88F76;
+
+  --font-sans: "Satoshi", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+
+  /* Corners — soft */
+  --radius-xl: 22px; --radius-lg: 16px; --radius-md: 10px;
+  --radius-sm: 8px;  --radius-xs: 4px;
+
+  /* Density — standard */
+  --control-sm: 26px; --control-md: 32px; --control-lg: 40px;
+}

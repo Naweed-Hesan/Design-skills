@@ -1,0 +1,53 @@
+/* ── Slate · restrained ────────────────────────────────────────────────────
+   Cool paper, a blue that stays out of the way, sharp corners, compact density.
+   For dense tools, admin and anything where the data matters more than the chrome.
+
+   Copy over tokens/brand.css:  cp presets/slate.css tokens/brand.css
+   Then update tokens/fonts.css to load the typefaces named below.
+
+   Contrast-verified: python3 scripts/check-contrast.py presets/slate.css
+   ─────────────────────────────────────────────────────────────────── */
+:root {
+  --accent-900: #0B1922;
+  --accent-800: #16465F;
+  --accent-700: #1C5877;
+  --accent-600: #22698C;
+  --accent-500: #2A7CA3;
+  --accent-400: #4E9AC0;
+  --accent-300: #79B6D8;
+  --accent-200: #B0D5E9;
+  --accent-100: #DCEBF4;
+  --accent-rgb:      42, 124, 163;
+  --accent-rgb-dark: 121, 182, 216;
+
+  /* Neutrals — cool */
+  --paper-0: #FFFFFF;  --paper-50: #F8FAFB;  --paper-100: #EFF3F5;
+  --paper-200: #E5EAEE; --paper-300: #D6DDE3;
+  --ink-950: #0A0D10;  --ink-900: #10151A;  --ink-850: #14181C;
+  --ink-800: #1C2229;  --ink-700: #262E36;
+  --slate-900: #0A0D10; --slate-800: #1F262C; --slate-700: #414B54;
+  --slate-600: #55606A; --slate-500: #6C7883; --slate-400: #94A0AB;
+  --slate-300: #AEB9C3; --slate-200: #CBD4DC;
+  --ink-text-primary: #F2F5F7;  --ink-text-secondary: #B0BAC3;
+  --ink-text-tertiary: #7E8A94; --ink-text-disabled: #59636C;
+
+  --green-600: #146B4C;  --green-400: #43BC8B;
+  --amber-600: #8A6016;  --amber-400: #D3A661;
+  --red-600:   #A3392F;  --red-400:   #DC685D;
+  --blue-600:  #2A6B9C;  --blue-400:  #62ADDB;
+  --series-2-light: #4C7FA8;  --series-2-dark: #6FA9CE;
+  --series-3-light: #B08535;  --series-3-dark: #D6A96A;
+  --series-4-light: #7A5F9C;  --series-4-dark: #A88AC8;
+  --series-5-light: #4F8570;  --series-5-dark: #7CB39C;
+  --series-6-light: #A56A55;  --series-6-dark: #C99180;
+
+  --font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "SF Mono", Menlo, Consolas, monospace;
+
+  /* Corners — sharp */
+  --radius-xl: 10px; --radius-lg: 6px; --radius-md: 4px;
+  --radius-sm: 4px;  --radius-xs: 2px;
+
+  /* Density — compact */
+  --control-sm: 24px; --control-md: 28px; --control-lg: 36px;
+}
