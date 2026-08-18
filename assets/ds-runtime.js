@@ -56,18 +56,32 @@
      and collect the names the file means to export. */
   function demodularise(src) {
     var names = [];
+    var m;
+
+    /* Names the file explicitly exports. Matched on the ORIGINAL source,
+       before the export keywords are stripped. */
+    var exportRe = /^\s*export\s+(?:default\s+)?(?:function|const|let|var|class)\s+([A-Za-z_$][\w$]*)/gm;
+    while ((m = exportRe.exec(src))) {
+      if (names.indexOf(m[1]) === -1) names.push(m[1]);
+    }
+
+    /* A file with no export syntax at all — a kit screen, say — falls back
+       to its top-level capitalised declarations. Without this fallback a
+       component written without `export` would silently never register. */
+    if (!names.length) {
+      var bareRe = /^(?:function|const|let|var|class)\s+([A-Z][\w$]*)/gm;
+      while ((m = bareRe.exec(src))) {
+        if (names.indexOf(m[1]) === -1) names.push(m[1]);
+      }
+    }
+
     var out = src
       .replace(/^\s*import\s+[^;]*?;?\s*$/gm, '')
       .replace(/^\s*export\s+default\s+/gm, '')
-      .replace(/^\s*export\s+(function|const|let|var|class)\s+/gm, function (m, kw) {
+      .replace(/^\s*export\s+(function|const|let|var|class)\s+/gm, function (_m, kw) {
         return kw + ' ';
       });
 
-    var re = /^\s*(?:function|const|let|var|class)\s+([A-Z][A-Za-z0-9_]*)/gm;
-    var m;
-    while ((m = re.exec(src))) {
-      if (names.indexOf(m[1]) === -1) names.push(m[1]);
-    }
     return { code: out, names: names };
   }
 
