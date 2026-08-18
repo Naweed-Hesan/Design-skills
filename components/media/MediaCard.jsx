@@ -41,8 +41,8 @@ export function MediaCard({
           style={{
             position: 'absolute', left: 0, right: 0, bottom: 0,
             padding: '22px 10px 9px',
-            background: 'linear-gradient(to top, rgba(0,0,0,0.72), rgba(0,0,0,0))',
-            color: '#fff',
+            background: 'linear-gradient(to top, var(--on-media-scrim-from), var(--on-media-scrim-to))',
+            color: 'var(--on-media-text)',
             animation: 'ds-fade var(--duration-fast) var(--ease)',
             pointerEvents: 'none',
           }}
@@ -70,9 +70,9 @@ export function MediaCard({
             display: hover || selected ? 'flex' : 'none',
             alignItems: 'center', justifyContent: 'center',
             borderRadius: 'var(--radius-inset)',
-            border: selected ? 'none' : '1px solid rgba(255,255,255,0.7)',
-            background: selected ? 'var(--accent-solid)' : 'rgba(0,0,0,0.35)',
-            color: '#fff', cursor: 'pointer',
+            border: selected ? 'none' : '1px solid var(--on-media-border)',
+            background: selected ? 'var(--accent-solid)' : 'var(--on-media-control)',
+            color: 'var(--on-media-text)', cursor: 'pointer',
             backdropFilter: 'blur(4px)',
           }}
         >

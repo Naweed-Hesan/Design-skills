@@ -81,12 +81,22 @@ tokens/
   motion.css            curve, durations, keyframes, reduced-motion
   base.css              element defaults
 
-presets/                drop-in brand layers
+presets/                drop-in brand layers — teal, slate, ember, iris
 guidelines/             foundation specimens, re-render per brand
-components/             8 families, each with a demo card
-templates/              starter canvas + starter React kit
+components/             8 families, 52 components, each with a demo card
+templates/
+  canvas.dc.html        starter Claude Design canvas, brand exposed as panel controls
+  kit/                  starter React prototype
 references/             brand-layer · contrast · dc-canvas · react-kit · review
+scripts/
+  check-contrast.py     verifies a brand layer, exits non-zero on failure
 assets/ds-runtime.js    the mount helper the demo cards and kits use
+```
+
+Verify a brand layer at any point:
+
+```bash
+python3 scripts/check-contrast.py tokens/brand.css
 ```
 
 Every component ships three files: `.jsx` (the implementation), `.d.ts` (the prop

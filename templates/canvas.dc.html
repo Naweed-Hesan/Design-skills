@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Condensed token set. Same semantic roles as the full system, short names
+   because a canvas is standalone and cannot import styles.css. */
+:root{
+  --bg:#F1F0EC; --panel:#FFFFFF; --panel2:#FAF9F7; --sunk:#EAE9E4;
+  --line:rgba(10,10,10,0.10); --line-soft:rgba(10,10,10,0.06);
+  --fg:#0A0A0A; --fg2:#4A4A46; --fg3:#74746E; --fg4:#9A9A93;
+  --accent-ink:#FFFFFF;
+  --ok:#17714E; --warn:#8F6314; --danger:#A83A2E;
+  --scrim:rgba(20,20,18,0.44);
+  --shadow:0 1px 2px rgba(13,13,13,0.04), 0 8px 24px rgba(13,13,13,0.06);
+  --shadow-sm:0 1px 2px rgba(13,13,13,0.05);
+  --shadow-lg:0 2px 4px rgba(13,13,13,0.05), 0 16px 40px rgba(13,13,13,0.10);
+  --ease:cubic-bezier(0.22,0.68,0.24,1);
+  --mono:'JetBrains Mono','SF Mono',Menlo,monospace;
+}
+[data-theme="dark"]{
+  --bg:#0A0A0A; --panel:#161616; --panel2:#121212; --sunk:#1F1F1F;
+  --line:rgba(255,255,255,0.10); --line-soft:rgba(255,255,255,0.055);
+  --fg:#F5F5F3; --fg2:#B4B4AE; --fg3:#82827C; --fg4:#5E5E58;
+  --accent-ink:#06201F;
+  --ok:#45C08A; --warn:#D6A85E; --danger:#E0685A;
+  --scrim:rgba(0,0,0,0.66);
+  --shadow:0 1px 2px rgba(0,0,0,0.40), 0 10px 30px rgba(0,0,0,0.34);
+  --shadow-sm:0 1px 2px rgba(0,0,0,0.35);
+  --shadow-lg:0 2px 6px rgba(0,0,0,0.44), 0 20px 48px rgba(0,0,0,0.46);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg)}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+svg{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;display:block;flex:none}
+input,textarea,button,select{font-family:inherit;font-size:inherit;color:inherit;letter-spacing:inherit}
+input::placeholder{color:var(--fg4)}
+h1,h2,h3{margin:0;color:var(--fg);font-weight:700}
+p{margin:0}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:0.01ms !important;transition-duration:0.01ms !important}}
+</style>
+</helmet>
+
+<div style="{{ rootStyle }}">
+
+  <!-- chrome -->
+  <div style="flex:none;height:46px;display:flex;align-items:center;gap:14px;padding:0 14px;background:var(--panel2);border-bottom:1px solid var(--line-soft)">
+    <div style="display:flex;align-items:center;gap:7px">
+      <div style="{{ markStyle }}"></div>
+      <span style="font-size:13px;font-weight:500;letter-spacing:-0.02em;color:var(--fg)">{{ productName }}</span>
+    </div>
+
+    <div style="display:flex;gap:2px;padding:3px;border-radius:calc(var(--r-md) + 3px);background:var(--sunk)">
+      <sc-for list="{{ screenTabs }}" as="t" hint-placeholder-count="3">
+        <button onClick="{{ t.go }}" style="{{ t.style }}">{{ t.label }}</button>
+      </sc-for>
+    </div>
+
+    <div style="flex:1"></div>
+
+    <button onClick="{{ toggleTheme }}" title="Toggle theme" style="{{ iconBtnStyle }}" style-hover="{color:'var(--fg)',borderColor:'var(--fg3)'}">
+      <sc-if value="{{ isDark }}" hint-placeholder-val="{{ false }}">
+        <svg width="15" height="15" viewBox="0 0 16 16"><path d="M13.2 9.9A5.6 5.6 0 016.1 2.8a5.6 5.6 0 107.1 7.1z"></path></svg>
+      </sc-if>
+      <sc-if value="{{ isLight }}" hint-placeholder-val="{{ true }}">
+        <svg width="15" height="15" viewBox="0 0 16 16"><circle cx="8" cy="8" r="2.9"></circle><path d="M8 1.4v1.5M8 13.1v1.5M1.4 8h1.5M13.1 8h1.5M3.3 3.3l1.1 1.1M11.6 11.6l1.1 1.1M12.7 3.3l-1.1 1.1M4.4 11.6l-1.1 1.1"></path></svg>
+      </sc-if>
+    </button>
+  </div>
+
+  <!-- body -->
+  <div style="flex:1;min-height:0;display:flex;gap:10px;padding:10px">
+
+    <!-- rail -->
+    <div style="flex:none;width:214px;display:flex;flex-direction:column;border-radius:var(--r-lg);background:var(--panel);box-shadow:var(--shadow);overflow:hidden">
+      <div style="padding:11px 9px 6px">
+        <div style="{{ searchStyle }}">
+          <svg width="14" height="14" viewBox="0 0 16 16" style="color:var(--fg3)"><circle cx="7" cy="7" r="4.4"></circle><path d="M10.4 10.4L14 14"></path></svg>
+          <input value="{{ q }}" onChange="{{ onSearch }}" placeholder="Search" style="flex:1;border:0;background:transparent;font-size:12.5px;min-width:0;outline:none" />
+        </div>
+      </div>
+
+      <div style="padding:6px 15px 5px;font-size:11.5px;color:var(--fg3)">Sections</div>
+
+      <div style="flex:1;overflow-y:auto;padding:0 8px 8px">
+        <sc-for list="{{ navRows }}" as="n" hint-placeholder-count="5">
+          <div onClick="{{ n.go }}" style="{{ n.style }}">
+            <span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ n.label }}</span>
+            <span style="{{ n.countStyle }}">{{ n.count }}</span>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="flex:none;padding:12px 15px;border-top:1px solid var(--line-soft)">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
+          <span style="font-size:12px;color:var(--fg2)">Storage</span>
+          <span class="num" style="font-size:11px;color:var(--fg3)">{{ storagePct }}</span>
+        </div>
+        <div style="height:3px;border-radius:3px;background:var(--sunk);overflow:hidden">
+          <div style="{{ storageBarStyle }}"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- main -->
+    <div style="flex:1;min-width:0;display:flex;flex-direction:column;border-radius:var(--r-lg);background:var(--panel);box-shadow:var(--shadow);overflow:hidden">
+
+      <div style="flex:none;display:flex;align-items:flex-start;gap:14px;padding:15px 16px 13px;border-bottom:1px solid var(--line-soft)">
+        <div style="flex:1;min-width:0">
+          <h1 style="font-size:20px;line-height:1.25;letter-spacing:-0.022em">{{ pageTitle }}</h1>
+          <p style="margin-top:4px;font-size:12.5px;color:var(--fg3)">{{ pageSubtitle }}</p>
+        </div>
+        <button onClick="{{ primaryAction }}" style="{{ primaryBtnStyle }}" style-hover="{opacity:'0.9'}">
+          <svg width="14" height="14" viewBox="0 0 16 16"><path d="M8 3.5v9M3.5 8h9"></path></svg>
+          {{ primaryLabel }}
+        </button>
+      </div>
+
+      <div style="flex:1;min-height:0;overflow-y:auto;padding:14px 16px">
+
+        <!-- overview -->
+        <sc-if value="{{ isOverview }}" hint-placeholder-val="{{ true }}">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px">
+            <sc-for list="{{ metrics }}" as="m" hint-placeholder-count="3">
+              <div style="{{ m.cardStyle }}">
+                <div style="font-size:11.5px;color:var(--fg3)">{{ m.label }}</div>
+                <div class="num" style="margin-top:7px;font-size:25px;line-height:1.1;font-weight:700;letter-spacing:-0.03em;color:var(--fg)">{{ m.value }}</div>
+                <div style="{{ m.deltaStyle }}">{{ m.delta }}</div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="{{ panelStyle }}">
+            <div style="font-size:13.5px;font-weight:700;letter-spacing:-0.011em;color:var(--fg);margin-bottom:12px">Recent</div>
+            <sc-for list="{{ rows }}" as="r" hint-placeholder-count="6">
+              <div style="{{ r.rowStyle }}" style-hover="{background:'var(--panel2)'}">
+                <div style="{{ r.dotStyle }}"></div>
+                <span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12.5px;color:var(--fg2)">{{ r.name }}</span>
+                <span style="{{ r.pillStyle }}">{{ r.status }}</span>
+                <span class="num" style="font-size:11px;color:var(--fg3);width:70px;text-align:right">{{ r.value }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <!-- settings -->
+        <sc-if value="{{ isSettings }}">
+          <div style="{{ panelStyle }}">
+            <sc-for list="{{ settings }}" as="s" hint-placeholder-count="4">
+              <div style="{{ s.rowStyle }}">
+                <div style="flex:1;min-width:0">
+                  <div style="font-size:12.5px;color:var(--fg)">{{ s.label }}</div>
+                  <div style="margin-top:3px;font-size:11.5px;color:var(--fg3);line-height:1.45">{{ s.description }}</div>
+                </div>
+                <button onClick="{{ s.toggle }}" style="{{ s.switchStyle }}">
+                  <span style="{{ s.knobStyle }}"></span>
+                </button>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <!-- empty -->
+        <sc-if value="{{ isEmpty }}">
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 24px">
+            <div style="{{ emptyIconStyle }}">
+              <svg width="20" height="20" viewBox="0 0 16 16"><path d="M2.5 12.5v-9h4l1.5 2h5.5v7z"></path></svg>
+            </div>
+            <h3 style="margin-top:12px;font-size:16px;letter-spacing:-0.015em">Nothing here yet</h3>
+            <p style="margin-top:5px;max-width:320px;font-size:12.5px;line-height:1.5;color:var(--fg3)">
+              Say what goes here, and give the action that puts something here.
+            </p>
+            <button onClick="{{ primaryAction }}" style="{{ primaryBtnStyle }};margin-top:16px">Add the first one</button>
+          </div>
+        </sc-if>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:820},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#0B8B8E&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#0B8B8E&quot;,&quot;#2A7CA3&quot;,&quot;#7357CC&quot;,&quot;#C4551F&quot;],&quot;section&quot;:&quot;Brand&quot;},&quot;corners&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Soft&quot;,&quot;options&quot;:[&quot;Soft&quot;,&quot;Rounded&quot;,&quot;Sharp&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Brand&quot;},&quot;density&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Standard&quot;,&quot;options&quot;:[&quot;Compact&quot;,&quot;Standard&quot;,&quot;Roomy&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Brand&quot;},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Light&quot;,&quot;options&quot;:[&quot;Light&quot;,&quot;Dark&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Brand&quot;},&quot;productName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Product&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Content&quot;}}">
+
+/* ── Brand layer ──────────────────────────────────────────────────────
+   The three decisions from references/brand-layer.md, exposed as controls
+   in the properties panel and written onto the root as custom properties.
+   Everything below reads the variables, never the raw values. */
+const CORNERS = { Soft: [16, 10, 8], Rounded: [22, 14, 12], Sharp: [6, 4, 4] };
+const DENSITY = { Compact: [24, 28, 36], Standard: [26, 32, 40], Roomy: [32, 40, 48] };
+
+const [rLg, rMd, rSm] = CORNERS[corners] || CORNERS.Soft;
+const [cSm, cMd, cLg] = DENSITY[density] || DENSITY.Standard;
+
+/* One accent, three roles — the identity value usually fails as text, so
+   derive a darker step for filled controls. See references/contrast.md. */
+function shade(hex, amount) {
+  const n = parseInt(String(hex).replace('#', ''), 16);
+  const f = (s) => Math.max(0, Math.min(255, Math.round(((n >> s) & 255) * amount)));
+  return '#' + [16, 8, 0].map((s) => f(s).toString(16).padStart(2, '0')).join('');
+}
+function rgbOf(hex) {
+  const n = parseInt(String(hex).replace('#', ''), 16);
+  return [(n >> 16) & 255, (n >> 8) & 255, n & 255].join(',');
+}
+
+const [state, setState] = React.useState({
+  screen: 'overview',
+  dark: theme === 'Dark',
+  q: '',
+  nav: 'all',
+  toggles: { sync: true, notify: false, beta: false },
+});
+
+const isDark = state.dark;
+const isLight = !state.dark;
+
+/* On dark the light accent is the accessible one, so the roles collapse. */
+const accentSolid = isDark ? accent : shade(accent, 0.9);
+const accentText = isDark ? accent : shade(accent, 0.82);
+const accentRgb = rgbOf(accent);
+
+const rootStyle = {
+  '--accent': accent,
+  '--accent-solid': accentSolid,
+  '--accent-text': accentText,
+  '--accent-soft': `rgba(${accentRgb},${isDark ? 0.14 : 0.10})`,
+  '--r-lg': rLg + 'px', '--r-md': rMd + 'px', '--r-sm': rSm + 'px',
+  '--c-sm': cSm + 'px', '--c-md': cMd + 'px', '--c-lg': cLg + 'px',
+  height: '100vh',
+  display: 'flex',
+  flexDirection: 'column',
+  background: 'var(--bg)',
+  color: 'var(--fg)',
+  fontFamily: "'Satoshi','Helvetica Neue',Helvetica,Arial,sans-serif",
+  fontSize: '13.5px',
+  lineHeight: 1.5,
+  letterSpacing: '-0.005em',
+  overflow: 'hidden',
+};
+rootStyle['data-theme'] = undefined;
+
+/* The theme attribute has to live on an element the token blocks match. */
+React.useEffect(() => {
+  document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+}, [isDark]);
+
+const toggleTheme = () => setState((s) => ({ ...s, dark: !s.dark }));
+const onSearch = (e) => setState((s) => ({ ...s, q: e.target.value }));
+
+/* ── Screens ─────────────────────────────────────────────────────────── */
+const SCREENS = [
+  { id: 'overview', label: 'Overview' },
+  { id: 'settings', label: 'Settings' },
+  { id: 'empty', label: 'Empty' },
+];
+
+const isOverview = state.screen === 'overview';
+const isSettings = state.screen === 'settings';
+const isEmpty = state.screen === 'empty';
+
+const tabStyle = (on) => ({
+  height: 'var(--c-sm)', padding: '0 11px', border: 0,
+  borderRadius: 'var(--r-md)',
+  background: on ? 'var(--panel)' : 'transparent',
+  boxShadow: on ? 'var(--shadow-sm)' : 'none',
+  color: on ? 'var(--fg)' : 'var(--fg3)',
+  fontSize: 12, fontWeight: on ? 500 : 400,
+  cursor: 'pointer', transition: 'all 0.18s var(--ease)',
+});
+
+const screenTabs = SCREENS.map((s) => ({
+  label: s.label,
+  style: tabStyle(state.screen === s.id),
+  go: () => setState((v) => ({ ...v, screen: s.id })),
+}));
+
+const pageTitle = isOverview ? 'Overview' : isSettings ? 'Settings' : 'All items';
+const pageSubtitle = isOverview ? '184 items across 3 sections'
+  : isSettings ? 'Applied immediately' : 'Nothing here yet';
+const primaryLabel = isSettings ? 'Save' : 'New item';
+const primaryAction = () => {};
+
+/* ── Navigation ──────────────────────────────────────────────────────── */
+const NAV = [
+  { id: 'all', label: 'All items', count: 248 },
+  { id: 'recent', label: 'Recent', count: 18 },
+  { id: 'shared', label: 'Shared with me', count: 42 },
+  { id: 'archive', label: 'Archive', count: 96 },
+];
+
+const navRows = NAV.map((n) => {
+  const on = state.nav === n.id;
+  return {
+    label: n.label,
+    count: n.count,
+    style: {
+      display: 'flex', alignItems: 'center', gap: 9,
+      height: 30, padding: '0 8px', marginBottom: 1,
+      borderRadius: 'var(--r-md)',
+      background: on ? 'var(--accent-soft)' : 'transparent',
+      color: on ? 'var(--accent-text)' : 'var(--fg2)',
+      fontSize: 12.5, fontWeight: on ? 500 : 400,
+      cursor: 'pointer', transition: 'all 0.18s var(--ease)',
+    },
+    countStyle: {
+      fontFamily: 'var(--mono)', fontSize: 10.5,
+      color: on ? 'var(--accent-text)' : 'var(--fg4)',
+    },
+  };
+});
+
+const storagePct = '73%';
+const storageBarStyle = { width: '73%', height: '100%', borderRadius: 3, background: 'var(--accent)' };
+
+/* ── Content ─────────────────────────────────────────────────────────── */
+const panelStyle = {
+  padding: 14, borderRadius: 'var(--r-md)',
+  background: 'var(--panel2)', border: '1px solid var(--line-soft)',
+};
+
+const metrics = [
+  { label: 'Items this week', value: '2,481', delta: '+12.4% vs last week', up: true },
+  { label: 'Active people', value: '184', delta: '+4.1% vs last week', up: true },
+  { label: 'Error rate', value: '0.8%', delta: '-31% vs last week', up: true },
+].map((m) => ({
+  ...m,
+  cardStyle: { padding: 14, borderRadius: 'var(--r-md)', background: 'var(--panel2)', border: '1px solid var(--line-soft)' },
+  deltaStyle: { marginTop: 5, fontFamily: 'var(--mono)', fontSize: 11, color: m.up ? 'var(--ok)' : 'var(--danger)' },
+}));
+
+const STATUSES = [
+  ['Published', 'ok'], ['In review', 'warn'], ['Draft', 'fg3'], ['Failed', 'danger'],
+];
+
+const rows = [
+  'Lunar identity system', 'Poster design study', 'Editorial spread',
+  'Gradient composition', 'Layout grid study', 'Type specimen',
+].map((name, i) => {
+  const [status, tone] = STATUSES[i % STATUSES.length];
+  const color = tone === 'fg3' ? 'var(--fg3)' : `var(--${tone})`;
+  return {
+    name,
+    status,
+    value: (2481 - i * 317).toLocaleString(),
+    rowStyle: {
+      display: 'flex', alignItems: 'center', gap: 10,
+      padding: '9px 8px', borderRadius: 'var(--r-sm)',
+      transition: 'background 0.12s var(--ease)', cursor: 'pointer',
+    },
+    dotStyle: { width: 6, height: 6, borderRadius: '50%', background: color, flex: 'none' },
+    pillStyle: { fontSize: 11, color, width: 74 },
+  };
+});
+
+const SETTINGS = [
+  { id: 'sync', label: 'Sync across devices', description: 'Changes appear on every device signed in to this account.' },
+  { id: 'notify', label: 'Email notifications', description: 'A weekly summary of what changed.' },
+  { id: 'beta', label: 'Early features', description: 'Try things before they are finished. They may break.' },
+];
+
+const settings = SETTINGS.map((s, i) => {
+  const on = state.toggles[s.id];
+  return {
+    label: s.label,
+    description: s.description,
+    rowStyle: {
+      display: 'flex', alignItems: 'flex-start', gap: 16,
+      padding: '13px 0',
+      borderBottom: i === SETTINGS.length - 1 ? 'none' : '1px solid var(--line-soft)',
+    },
+    switchStyle: {
+      position: 'relative', width: 34, height: 20, flex: 'none', padding: 0,
+      borderRadius: 999, border: 0,
+      background: on ? 'var(--accent-solid)' : 'var(--sunk)',
+      boxShadow: on ? 'none' : 'inset 0 0 0 1px var(--line)',
+      cursor: 'pointer', transition: 'background 0.18s var(--ease)',
+    },
+    knobStyle: {
+      position: 'absolute', top: '50%', left: on ? 15 : 2,
+      width: 16, height: 16, borderRadius: '50%',
+      background: 'var(--panel)', boxShadow: 'var(--shadow-sm)',
+      transform: 'translateY(-50%)', transition: 'left 0.18s var(--ease)',
+    },
+    toggle: () => setState((v) => ({ ...v, toggles: { ...v.toggles, [s.id]: !v.toggles[s.id] } })),
+  };
+});
+
+/* ── Shared chrome styles ────────────────────────────────────────────── */
+const markStyle = {
+  width: 20, height: 20, borderRadius: 6,
+  background: 'var(--accent)',
+};
+const iconBtnStyle = {
+  width: 30, height: 30, display: 'flex', alignItems: 'center', justifyContent: 'center',
+  border: '1px solid var(--line)', borderRadius: 'var(--r-md)',
+  background: 'var(--panel)', color: 'var(--fg2)', cursor: 'pointer',
+  transition: 'color 0.18s var(--ease), border-color 0.18s var(--ease)',
+};
+const searchStyle = {
+  display: 'flex', alignItems: 'center', gap: 7,
+  height: 'var(--c-md)', padding: '0 10px',
+  borderRadius: 'var(--r-md)', background: 'var(--panel2)',
+  border: '1px solid var(--line-soft)',
+};
+const primaryBtnStyle = {
+  display: 'inline-flex', alignItems: 'center', gap: 7,
+  height: 'var(--c-md)', padding: '0 13px', flex: 'none',
+  border: 0, borderRadius: 'var(--r-md)',
+  background: 'var(--accent-solid)', color: 'var(--accent-ink)',
+  fontSize: 12.5, fontWeight: 500, cursor: 'pointer',
+  transition: 'opacity 0.18s var(--ease)',
+};
+const emptyIconStyle = {
+  display: 'flex', alignItems: 'center', justifyContent: 'center',
+  width: 42, height: 42, borderRadius: 'var(--r-md)',
+  background: 'var(--sunk)', color: 'var(--fg3)',
+};
+
+const q = state.q;
+</script>
+</body>
+</html>

@@ -141,6 +141,7 @@ components/
                         CTABanner, FAQItem, StatStrip
 templates/              starter canvas and starter React kit
 references/             brand-layer · contrast · dc-canvas · react-kit · review
+scripts/check-contrast.py   verifies a brand layer — run it after any accent change
 ```
 
 Every component ships three files: `.jsx` (implementation), `.d.ts` (prop contract, with a

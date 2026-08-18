@@ -8,6 +8,9 @@ finished and work that is finished.
 1. **No hard-coded values.** Search the diff for `#`, `px` on a radius, and any control
    height. Colours are semantic tokens; radii are roles (`--radius-panel`); heights are
    `--control-*`. A raw hex outside `tokens/` or a canvas `:root` block is a bug.
+   Content sitting on top of imagery rather than a surface is the one real exception —
+   white on a dark scrim is correct in both themes — and it still uses tokens
+   (`--on-media-*`), so the choice is visible rather than buried in a component.
 2. **No ramp steps in components.** A component referencing `--accent-500` instead of
    `--accent` will not survive the theme swap.
 3. **Spacing lands on the 4px grid.** Any gap not a `--space-*` step was eyeballed.

@@ -1,0 +1,24 @@
+<!-- @dsCard group="Kits" viewport="1280x820" subtitle="App shell with overview, table and settings" name="Starter kit" -->
+<!-- @startingPoint section="Kits" subtitle="App shell with sidebar, header, charts and a table" viewport="1280x820" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Starter kit</title>
+<link rel="stylesheet" href="../../styles.css">
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="../../assets/ds-runtime.js"></script>
+<style>
+  html, body { height: 100%; overflow: hidden; }
+  #root { height: 100vh; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+  DSMount({ root: '../../', files: ['data.js', 'App.jsx'], render: 'App' });
+</script>
+</body>
+</html>

@@ -65,6 +65,18 @@
 
   /* The neutral that sits behind an image while it loads */
   --media-well: var(--paper-200);
+
+  /* ── On-media ─────────────────────────────────────────────────────
+     These sit on top of arbitrary imagery rather than on a surface, so
+     they do NOT flip with the theme — white on a dark scrim is correct
+     over a photograph in both light and dark. They are tokens rather
+     than literals so the values are deliberate and swappable, not magic
+     numbers buried in a component. */
+  --on-media-text: #FFFFFF;
+  --on-media-scrim-from: rgba(0, 0, 0, 0.72);
+  --on-media-scrim-to: rgba(0, 0, 0, 0);
+  --on-media-control: rgba(0, 0, 0, 0.35);
+  --on-media-border: rgba(255, 255, 255, 0.70);
 }
 
 [data-theme="dark"] {
