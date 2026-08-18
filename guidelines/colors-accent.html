@@ -1,0 +1,29 @@
+<!-- @dsCard group="Colors" viewport="760x230" subtitle="One hue, three roles. The identity value fails as text — that is why." name="Accent" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Accent</title>
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="_specimen.css">
+<script src="_specimen.js" defer></script>
+</head>
+<body>
+<div class="g-note">The ramp, then the three semantic roles. Verify with scripts/check-contrast.py after any change.</div>
+<div class="g-section"><div class="g-h">Ramp</div><div id="ramp"></div></div>
+<div class="g-section"><div class="g-h">Roles</div><div id="roles"></div></div>
+<div class="g-row">
+  <button style="height:var(--control-md);padding:0 14px;border:0;border-radius:var(--radius-control);background:var(--accent-solid);color:var(--text-on-accent);font:inherit;font-size:12.5px">Primary button</button>
+  <a href="#" style="font-size:12.5px">An accent-coloured link</a>
+  <span style="display:inline-flex;height:22px;align-items:center;padding:0 9px;border-radius:var(--radius-chip);background:var(--accent-soft);color:var(--accent-text);font-size:11.5px">Tinted state</span>
+  <span style="width:44px;height:22px;border-radius:var(--radius-inset);background:var(--accent-ring)"></span>
+</div>
+<script>
+window.addEventListener('DOMContentLoaded', function () {
+  DSSpecimen.swatches('#ramp', [['--accent-800','800'],['--accent-700','700'],['--accent-600','600'],
+    ['--accent-500','500'],['--accent-400','400'],['--accent-300','300'],['--accent-200','200'],['--accent-100','100']], 8);
+  DSSpecimen.swatches('#roles', [['--accent','identity'],['--accent-solid','solid · filled controls'],
+    ['--accent-text','text · on light'],['--accent-soft','soft · tints']], 4);
+});
+</script>
+</body></html>

@@ -1,0 +1,20 @@
+<!-- @dsCard group="Colors" viewport="760x150" subtitle="Six ordered series. Series 1 is always the accent." name="Data series" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Data series</title>
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="_specimen.css">
+<script src="_specimen.js" defer></script>
+</head>
+<body>
+<div class="g-note">Assigned in order. Only reach past series 3 when you genuinely have that many lines.</div>
+<div id="series"></div>
+<script>
+window.addEventListener('DOMContentLoaded', function () {
+  DSSpecimen.swatches('#series', [['--chart-1','series 1'],['--chart-2','series 2'],['--chart-3','series 3'],
+    ['--chart-4','series 4'],['--chart-5','series 5'],['--chart-6','series 6']], 6);
+});
+</script>
+</body></html>

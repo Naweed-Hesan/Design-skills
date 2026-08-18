@@ -1,0 +1,31 @@
+<!-- @dsCard group="Brand" viewport="760x260" subtitle="Line icons at stroke-width 1.5, drawn on a 16x16 grid." name="Iconography" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Iconography</title>
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="_specimen.css">
+<script src="_specimen.js" defer></script>
+</head>
+<body>
+<div class="g-note">The whole set is inline in components/core/Icon.jsx — no CDN, no dependency. Sizes: 13–15px in controls, 18–22px in empty states.</div>
+<div id="icons" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:10px"></div>
+<script type="module">
+  const src = await (await fetch('../components/core/Icon.jsx')).text();
+  const body = src.slice(src.indexOf('const PATHS'), src.indexOf('};', src.indexOf('const PATHS')));
+  const names = [...body.matchAll(/^\s{2}'?([a-z-]+)'?:\s*'/gm)].map(m => m[1]);
+  const paths = [...body.matchAll(/^\s{2}'?[a-z-]+'?:\s*'([^']+)'/gm)].map(m => m[1]);
+
+  document.getElementById('icons').innerHTML = names.map((n, i) => {
+    const [d, circle] = paths[i].split('@circle:');
+    const c = circle ? circle.split(',').map(Number) : null;
+    return `<div style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 4px;border-radius:var(--radius-control);background:var(--surface-raised)">
+      <svg class="ds-icon" width="18" height="18" viewBox="0 0 16 16" style="color:var(--text-secondary)">
+        ${d ? `<path d="${d}"/>` : ''}${c ? `<circle cx="${c[0]}" cy="${c[1]}" r="${c[2]}"/>` : ''}
+      </svg>
+      <span style="font-size:9.5px;color:var(--text-disabled);text-align:center;word-break:break-word">${n}</span>
+    </div>`;
+  }).join('');
+</script>
+</body></html>

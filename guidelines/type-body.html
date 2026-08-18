@@ -1,0 +1,19 @@
+<!-- @dsCard group="Type" viewport="760x230" subtitle="Four sizes carry an entire interface. Sentence case throughout." name="Body and UI text" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Body and UI text</title>
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="_specimen.css">
+<script src="_specimen.js" defer></script>
+</head>
+<body>
+<div class="g-note">No uppercase step exists, because there is no uppercase in this system. Small text recedes by being small and grey.</div>
+<div style="display:flex;flex-direction:column;gap:13px;max-width:var(--prose-max)">
+  <div><div style="font-size:var(--text-title-size);font-weight:700;letter-spacing:var(--text-title-track);color:var(--text-primary)">Title — bold, at body size, inside UI chrome</div><div class="g-hex">13.5px · 700</div></div>
+  <div><div style="font-size:var(--text-body-size);line-height:var(--text-body-line);letter-spacing:var(--text-body-track)">Body — the default. Long-form text caps at --prose-max regardless of how wide the page gets, because a line of text 1200px wide cannot be read.</div><div class="g-hex">13.5px · 1.5 · -0.005em</div></div>
+  <div><div style="font-size:var(--text-small-size);line-height:var(--text-small-line);color:var(--text-tertiary)">Small — secondary detail, descriptions, hints</div><div class="g-hex">12.5px · 1.45</div></div>
+  <div><div style="font-size:var(--text-micro-size);line-height:var(--text-micro-line);color:var(--text-tertiary)">Micro — field labels and section heads</div><div class="g-hex">11.5px · 1.4</div></div>
+</div>
+</body></html>

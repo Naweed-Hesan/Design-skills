@@ -1,0 +1,20 @@
+/* Shared chrome for the guideline specimens. Deliberately plain — the
+   specimen should not compete with what it is showing. */
+body {
+  padding: 18px;
+  background: var(--surface-canvas);
+  color: var(--text-secondary);
+}
+.g-grid { display: grid; gap: 8px; }
+.g-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.g-note { font-size: 11.5px; color: var(--text-tertiary); margin-bottom: 12px; }
+.g-label { font-size: 11px; color: var(--text-secondary); margin-top: 6px; }
+.g-hex {
+  font-family: var(--font-mono); font-size: 10px;
+  color: var(--text-disabled); margin-top: 1px;
+  font-variant-numeric: tabular-nums;
+}
+.g-chip { border-radius: var(--radius-media); min-width: 0; }
+.g-fill { height: 52px; border-radius: var(--radius-media); box-shadow: inset 0 0 0 1px var(--border-subtle); }
+.g-section { margin-bottom: 20px; }
+.g-h { font-size: 11.5px; color: var(--text-tertiary); margin-bottom: 8px; }

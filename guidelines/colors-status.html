@@ -1,0 +1,25 @@
+<!-- @dsCard group="Colors" viewport="760x160" subtitle="Success, warning, danger, info — a text colour and a tinted fill each." name="Status" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Status</title>
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="_specimen.css">
+<script src="_specimen.js" defer></script>
+</head>
+<body>
+<div class="g-note">Never carried by colour alone. Every status in the system pairs its tone with a word, an icon, or a dot.</div>
+<div id="status"></div>
+<div class="g-row" style="margin-top:14px">
+  <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px;border-radius:var(--radius-chip);background:var(--success-soft);color:var(--success);font-size:11.5px"><span style="width:5px;height:5px;border-radius:50%;background:currentColor"></span>Published</span>
+  <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px;border-radius:var(--radius-chip);background:var(--warning-soft);color:var(--warning);font-size:11.5px">Needs review</span>
+  <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px;border-radius:var(--radius-chip);background:var(--danger-soft);color:var(--danger);font-size:11.5px"><span style="width:5px;height:5px;border-radius:50%;background:currentColor"></span>Failed</span>
+  <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px;border-radius:var(--radius-chip);background:var(--info-soft);color:var(--info);font-size:11.5px">Scheduled</span>
+</div>
+<script>
+window.addEventListener('DOMContentLoaded', function () {
+  DSSpecimen.swatches('#status', [['--success','success'],['--warning','warning'],['--danger','danger'],['--info','info']], 4);
+});
+</script>
+</body></html>

@@ -1,0 +1,31 @@
+<!-- @dsCard group="Brand" viewport="760x170" subtitle="One curve, four durations. Hover a tile." name="Motion" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Motion</title>
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="_specimen.css">
+<script src="_specimen.js" defer></script>
+</head>
+<body>
+<div class="g-note">Nothing exceeds 220ms except a single media zoom, and all of it disappears under prefers-reduced-motion.</div>
+<div class="g-row" style="gap:12px">
+  <div><div class="m" style="transition-duration:var(--duration-instant)"></div><div class="g-label">instant</div><div class="g-hex">120ms · hover tints</div></div>
+  <div><div class="m" style="transition-duration:var(--duration-fast)"></div><div class="g-label">fast</div><div class="g-hex">180ms · controls</div></div>
+  <div><div class="m" style="transition-duration:var(--duration-base)"></div><div class="g-label">base</div><div class="g-hex">220ms · surfaces</div></div>
+  <div><div class="m" style="transition-duration:var(--duration-slow)"></div><div class="g-label">slow</div><div class="g-hex">320ms · panels</div></div>
+  <div><div class="m" style="transition-duration:var(--duration-media)"></div><div class="g-label">media</div><div class="g-hex">550ms · image zoom only</div></div>
+</div>
+<style>
+  .m {
+    width: 110px; height: 56px;
+    border-radius: var(--radius-panel);
+    background: var(--surface-raised);
+    box-shadow: var(--shadow-sm);
+    transition-property: transform, box-shadow, background;
+    transition-timing-function: var(--ease);
+  }
+  .m:hover { transform: translateY(var(--lift-card)) scale(1.02); box-shadow: var(--shadow-lg); background: var(--accent-soft); }
+</style>
+</body></html>
